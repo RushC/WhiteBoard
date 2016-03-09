@@ -6,11 +6,37 @@ namespace WhiteBoard
 {
     public partial class WhiteBoard : Form
     {
+        // The current editing mode of the canvas.
+        System.Windows.Controls.InkCanvasEditingMode mode;
 
         public WhiteBoard()
         {
             InitializeComponent();
             InitializeCanvas();
+        }
+
+        /// <summary>
+        /// Called when a touch input is about to be received by the canvas.
+        /// </summary>
+        private void Canvas_PreviewTouchDown(object sender, System.Windows.Input.TouchEventArgs e)
+        {
+            // Save the current editing mode.
+            if (canvas.EditingMode != System.Windows.Controls.InkCanvasEditingMode.None)
+                mode = canvas.EditingMode;
+
+            // Check if touch is disabled.
+            if (touchDisabledBox.Checked)
+                // Disable all editing.
+                canvas.EditingMode = System.Windows.Controls.InkCanvasEditingMode.None;
+        }
+
+        /// <summary>
+        /// Called when a touch input is about to leave the canvas.
+        /// </summary>
+        private void Canvas_PreviewTouchUp(object sender, System.Windows.Input.TouchEventArgs e)
+        {
+            // Return the editing mode back to normal.
+            canvas.EditingMode = mode;
         }
 
         /// <summary>

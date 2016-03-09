@@ -44,6 +44,10 @@
             // Define event listeners for the Stylus's button presses.
             canvas.StylusButtonDown += Canvas_StylusButtonDown;
             canvas.StylusButtonUp += Canvas_StylusButtonUp;
+
+            // Define event listeners for touch in order to prevent touch input from editing ink.
+            canvas.PreviewTouchDown += Canvas_PreviewTouchDown;
+            canvas.PreviewTouchUp += Canvas_PreviewTouchUp;
         }
 
         #region Windows Form Designer generated code
@@ -67,9 +71,12 @@
             this.strokeWidthPanel = new System.Windows.Forms.Panel();
             this.strokeWidthBar = new System.Windows.Forms.TrackBar();
             this.fullScreenToggleButton = new System.Windows.Forms.Button();
+            this.touchDisabledPanel = new System.Windows.Forms.Panel();
+            this.touchDisabledBox = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.strokeWidthPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.strokeWidthBar)).BeginInit();
+            this.touchDisabledPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // drawingPanel
@@ -80,7 +87,7 @@
             this.drawingPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.drawingPanel.Location = new System.Drawing.Point(0, 137);
             this.drawingPanel.Name = "drawingPanel";
-            this.drawingPanel.Size = new System.Drawing.Size(1769, 645);
+            this.drawingPanel.Size = new System.Drawing.Size(1912, 645);
             this.drawingPanel.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -97,10 +104,11 @@
             this.flowLayoutPanel1.Controls.Add(this.greenButton);
             this.flowLayoutPanel1.Controls.Add(this.BlueButton);
             this.flowLayoutPanel1.Controls.Add(this.strokeWidthPanel);
+            this.flowLayoutPanel1.Controls.Add(this.touchDisabledPanel);
             this.flowLayoutPanel1.Controls.Add(this.fullScreenToggleButton);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1769, 138);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1912, 138);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // ClearButton
@@ -204,7 +212,7 @@
             // 
             // fullScreenToggleButton
             // 
-            this.fullScreenToggleButton.Location = new System.Drawing.Point(1559, 3);
+            this.fullScreenToggleButton.Location = new System.Drawing.Point(1727, 3);
             this.fullScreenToggleButton.Name = "fullScreenToggleButton";
             this.fullScreenToggleButton.Size = new System.Drawing.Size(151, 128);
             this.fullScreenToggleButton.TabIndex = 8;
@@ -212,11 +220,31 @@
             this.fullScreenToggleButton.UseVisualStyleBackColor = true;
             this.fullScreenToggleButton.Click += new System.EventHandler(this.fullScreenToggleButton_Click);
             // 
+            // touchDisabledPanel
+            // 
+            this.touchDisabledPanel.Controls.Add(this.touchDisabledBox);
+            this.touchDisabledPanel.Location = new System.Drawing.Point(1559, 3);
+            this.touchDisabledPanel.Name = "touchDisabledPanel";
+            this.touchDisabledPanel.Size = new System.Drawing.Size(162, 128);
+            this.touchDisabledPanel.TabIndex = 9;
+            // 
+            // touchDisabledBox
+            // 
+            this.touchDisabledBox.AutoSize = true;
+            this.touchDisabledBox.Checked = true;
+            this.touchDisabledBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.touchDisabledBox.Location = new System.Drawing.Point(14, 53);
+            this.touchDisabledBox.Name = "touchDisabledBox";
+            this.touchDisabledBox.Size = new System.Drawing.Size(145, 24);
+            this.touchDisabledBox.TabIndex = 0;
+            this.touchDisabledBox.Text = "Touch Disabled";
+            this.touchDisabledBox.UseVisualStyleBackColor = true;
+            // 
             // WhiteBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1769, 781);
+            this.ClientSize = new System.Drawing.Size(1912, 781);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.drawingPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -227,6 +255,8 @@
             this.strokeWidthPanel.ResumeLayout(false);
             this.strokeWidthPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.strokeWidthBar)).EndInit();
+            this.touchDisabledPanel.ResumeLayout(false);
+            this.touchDisabledPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,6 +276,8 @@
         private System.Windows.Forms.Panel strokeWidthPanel;
         private System.Windows.Forms.TrackBar strokeWidthBar;
         private System.Windows.Forms.Button fullScreenToggleButton;
+        private System.Windows.Forms.Panel touchDisabledPanel;
+        private System.Windows.Forms.CheckBox touchDisabledBox;
     }
 }
 
