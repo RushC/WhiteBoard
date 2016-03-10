@@ -68,11 +68,13 @@
             this.redButton = new System.Windows.Forms.Button();
             this.greenButton = new System.Windows.Forms.Button();
             this.BlueButton = new System.Windows.Forms.Button();
+            this.chooseColorButton = new System.Windows.Forms.Button();
             this.strokeWidthPanel = new System.Windows.Forms.Panel();
             this.strokeWidthBar = new System.Windows.Forms.TrackBar();
-            this.fullScreenToggleButton = new System.Windows.Forms.Button();
             this.touchDisabledPanel = new System.Windows.Forms.Panel();
             this.touchDisabledBox = new System.Windows.Forms.CheckBox();
+            this.fullScreenToggleButton = new System.Windows.Forms.Button();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.flowLayoutPanel1.SuspendLayout();
             this.strokeWidthPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.strokeWidthBar)).BeginInit();
@@ -103,6 +105,7 @@
             this.flowLayoutPanel1.Controls.Add(this.redButton);
             this.flowLayoutPanel1.Controls.Add(this.greenButton);
             this.flowLayoutPanel1.Controls.Add(this.BlueButton);
+            this.flowLayoutPanel1.Controls.Add(this.chooseColorButton);
             this.flowLayoutPanel1.Controls.Add(this.strokeWidthPanel);
             this.flowLayoutPanel1.Controls.Add(this.touchDisabledPanel);
             this.flowLayoutPanel1.Controls.Add(this.fullScreenToggleButton);
@@ -114,6 +117,7 @@
             // ClearButton
             // 
             this.ClearButton.BackColor = System.Drawing.Color.White;
+            this.ClearButton.Font = new System.Drawing.Font("Segoe UI Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearButton.Location = new System.Drawing.Point(3, 3);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(138, 128);
@@ -125,6 +129,8 @@
             // eraseButton
             // 
             this.eraseButton.BackColor = System.Drawing.Color.White;
+            this.eraseButton.Font = new System.Drawing.Font("Segoe UI Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eraseButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.eraseButton.Location = new System.Drawing.Point(147, 3);
             this.eraseButton.Name = "eraseButton";
             this.eraseButton.Size = new System.Drawing.Size(138, 128);
@@ -136,6 +142,8 @@
             // eraseStrokesButton
             // 
             this.eraseStrokesButton.BackColor = System.Drawing.Color.White;
+            this.eraseStrokesButton.Font = new System.Drawing.Font("Segoe UI Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eraseStrokesButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.eraseStrokesButton.Location = new System.Drawing.Point(291, 3);
             this.eraseStrokesButton.Name = "eraseStrokesButton";
             this.eraseStrokesButton.Size = new System.Drawing.Size(138, 128);
@@ -180,10 +188,22 @@
             this.BlueButton.Location = new System.Drawing.Point(894, 3);
             this.BlueButton.Name = "BlueButton";
             this.BlueButton.Size = new System.Drawing.Size(147, 128);
-            this.BlueButton.TabIndex = 3;
+            this.BlueButton.TabIndex = 10;
             this.BlueButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BlueButton.UseVisualStyleBackColor = false;
             this.BlueButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.blueButton_MouseClick);
+            // 
+            // chooseColorButton
+            // 
+            this.chooseColorButton.BackColor = System.Drawing.Color.White;
+            this.chooseColorButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chooseColorButton.Location = new System.Drawing.Point(1047, 3);
+            this.chooseColorButton.Name = "chooseColorButton";
+            this.chooseColorButton.Size = new System.Drawing.Size(147, 128);
+            this.chooseColorButton.TabIndex = 3;
+            this.chooseColorButton.Text = "...";
+            this.chooseColorButton.UseVisualStyleBackColor = false;
+            this.chooseColorButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chooseColorButton_MouseClick);
             // 
             // strokeWidthPanel
             // 
@@ -191,9 +211,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.strokeWidthPanel.Controls.Add(this.strokeWidthBar);
-            this.strokeWidthPanel.Location = new System.Drawing.Point(1047, 3);
+            this.strokeWidthPanel.Location = new System.Drawing.Point(1200, 3);
             this.strokeWidthPanel.Name = "strokeWidthPanel";
-            this.strokeWidthPanel.Size = new System.Drawing.Size(506, 128);
+            this.strokeWidthPanel.Size = new System.Drawing.Size(364, 128);
             this.strokeWidthPanel.TabIndex = 7;
             // 
             // strokeWidthBar
@@ -205,27 +225,17 @@
             this.strokeWidthBar.Maximum = 20;
             this.strokeWidthBar.Minimum = 1;
             this.strokeWidthBar.Name = "strokeWidthBar";
-            this.strokeWidthBar.Size = new System.Drawing.Size(500, 69);
+            this.strokeWidthBar.Size = new System.Drawing.Size(358, 69);
             this.strokeWidthBar.TabIndex = 0;
             this.strokeWidthBar.Value = 1;
             this.strokeWidthBar.Scroll += new System.EventHandler(this.strokeWidthBar_Scroll);
             // 
-            // fullScreenToggleButton
-            // 
-            this.fullScreenToggleButton.Location = new System.Drawing.Point(1727, 3);
-            this.fullScreenToggleButton.Name = "fullScreenToggleButton";
-            this.fullScreenToggleButton.Size = new System.Drawing.Size(151, 128);
-            this.fullScreenToggleButton.TabIndex = 8;
-            this.fullScreenToggleButton.Text = "Full Screen";
-            this.fullScreenToggleButton.UseVisualStyleBackColor = true;
-            this.fullScreenToggleButton.Click += new System.EventHandler(this.fullScreenToggleButton_Click);
-            // 
             // touchDisabledPanel
             // 
             this.touchDisabledPanel.Controls.Add(this.touchDisabledBox);
-            this.touchDisabledPanel.Location = new System.Drawing.Point(1559, 3);
+            this.touchDisabledPanel.Location = new System.Drawing.Point(1570, 3);
             this.touchDisabledPanel.Name = "touchDisabledPanel";
-            this.touchDisabledPanel.Size = new System.Drawing.Size(162, 128);
+            this.touchDisabledPanel.Size = new System.Drawing.Size(174, 128);
             this.touchDisabledPanel.TabIndex = 9;
             // 
             // touchDisabledBox
@@ -233,12 +243,25 @@
             this.touchDisabledBox.AutoSize = true;
             this.touchDisabledBox.Checked = true;
             this.touchDisabledBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.touchDisabledBox.Font = new System.Drawing.Font("Segoe UI Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.touchDisabledBox.Location = new System.Drawing.Point(14, 53);
             this.touchDisabledBox.Name = "touchDisabledBox";
-            this.touchDisabledBox.Size = new System.Drawing.Size(145, 24);
+            this.touchDisabledBox.Size = new System.Drawing.Size(156, 25);
             this.touchDisabledBox.TabIndex = 0;
             this.touchDisabledBox.Text = "Touch Disabled";
             this.touchDisabledBox.UseVisualStyleBackColor = true;
+            // 
+            // fullScreenToggleButton
+            // 
+            this.fullScreenToggleButton.BackColor = System.Drawing.Color.White;
+            this.fullScreenToggleButton.Font = new System.Drawing.Font("Segoe UI Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullScreenToggleButton.Location = new System.Drawing.Point(1750, 3);
+            this.fullScreenToggleButton.Name = "fullScreenToggleButton";
+            this.fullScreenToggleButton.Size = new System.Drawing.Size(151, 128);
+            this.fullScreenToggleButton.TabIndex = 8;
+            this.fullScreenToggleButton.Text = "Full Screen";
+            this.fullScreenToggleButton.UseVisualStyleBackColor = false;
+            this.fullScreenToggleButton.Click += new System.EventHandler(this.fullScreenToggleButton_Click);
             // 
             // WhiteBoard
             // 
@@ -269,7 +292,7 @@
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button redButton;
         private System.Windows.Forms.Button greenButton;
-        private System.Windows.Forms.Button BlueButton;
+        private System.Windows.Forms.Button chooseColorButton;
         private System.Windows.Forms.Button blackButton;
         private System.Windows.Forms.Button eraseButton;
         private System.Windows.Forms.Button eraseStrokesButton;
@@ -278,6 +301,8 @@
         private System.Windows.Forms.Button fullScreenToggleButton;
         private System.Windows.Forms.Panel touchDisabledPanel;
         private System.Windows.Forms.CheckBox touchDisabledBox;
+        private System.Windows.Forms.Button BlueButton;
+        private System.Windows.Forms.ColorDialog colorDialog;
     }
 }
 

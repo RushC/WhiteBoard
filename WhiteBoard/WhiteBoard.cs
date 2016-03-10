@@ -169,5 +169,24 @@ namespace WhiteBoard
                 fullScreenToggleButton.Text = "Exit Full Screen";
             }
         }
+
+        /// <summary>
+        /// Called when the choose color button is pressed.
+        /// </summary>
+        private void chooseColorButton_MouseClick(object sender, MouseEventArgs e)
+        {
+            // Open the color dialog.
+            var result = colorDialog.ShowDialog();
+
+            // Check if the user selected a color.
+            if (result != DialogResult.Cancel)
+                // Set the color of the canvas to the selcted color.
+                canvas.DefaultDrawingAttributes.Color = System.Windows.Media.Color.FromArgb(
+                    colorDialog.Color.A,
+                    colorDialog.Color.R,
+                    colorDialog.Color.G,
+                    colorDialog.Color.B
+                );
+        }
     }
 }
